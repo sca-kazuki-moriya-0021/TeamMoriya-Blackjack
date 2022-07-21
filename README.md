@@ -1,1 +1,2 @@
 # TeamMoriya-Blackjack
+##　ブラックジャックのプログラムです
