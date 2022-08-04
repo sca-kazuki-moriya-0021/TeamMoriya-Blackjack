@@ -74,7 +74,7 @@ int main() {
     }
 
    //ディーラーの操作
-    while(Dsum <= 20||e <3){
+    while(Dsum <= 20){
       //全体のカード配列からカードを持ってくる
         dCard[e]=card[e];
       //合計数を求める
@@ -100,7 +100,7 @@ int main() {
     }
 
     //プレイヤーが2枚引く操作
-    if(pCardS <3){
+    if(victory == false && lose == false && pCardS <2){
         pCard[1 + pD] = card[e+p];
         cout<<pCard[1 +pD]<<endl; 
         //プレイヤーカードの合計数        
@@ -111,12 +111,12 @@ int main() {
         pCardS++;
     }
 
-    cout<<"合計"<<pSum<<endl;
 
 
   //カードをひく場合
-    if(victory == false && lose == false && doubleUp == false){
+    if(victory == false && lose == false){
       //プレイヤーの合計数が26少ない時
+      cout<<"合計"<<pSum<<endl;
       while(pSum<26)
       {
         cout<<"ダブルアップをしますか？"<<endl;  
@@ -147,10 +147,14 @@ int main() {
         pD++;
         p++;
         cout<<"合計"<<pSum<<endl;
+        doubleUp = true;   
         //26になったらこの文全体を抜ける
           if(pSum == 26){
             continue;
           }        
+        }else{
+          doubleUp = true;      
+          continue;
         }
       }
     }
