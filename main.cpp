@@ -32,12 +32,9 @@ int main() {
 
   int pK;//掛け金
 
-  bool doubleUp = false;
-  int doubleUpInt = 0;
+  bool doubleUp = false;//ダブルアップしたかどうか
+  int doubleUpInt = 0;//ダブルアップフラグを受け入れる変数
   
-  bool playerContinueFlag = false;
-  int playerContinue = 0;
-
   cout<<"掛け金を入力してください"<<endl;
   cin>>pK; 
 
@@ -108,7 +105,7 @@ int main() {
       cout<<pCard[0]<<endl;  
       //合計数加算  
       pSum += pCard[0];
-      //配列の要素をずらすためにプラス
+      //配列の要素をずらす
       p++;
       cout<<"ダブルアップをしますか？"<<endl;  
       cout<<"引くなら1 引かないなら2を押してください"<<endl;  
@@ -144,6 +141,7 @@ int main() {
         pD++;
         p++;
         cout<<"合計"<<pSum<<endl;
+        //26になったらこの文全体を抜ける
           if(pSum == 26){
             continue;
           }        
@@ -174,6 +172,7 @@ int main() {
       }
     }
   
+    //上のif文に入らなかった場合の処理
     if(victory == false && lose == false){
       if(Dsum >= pSum){
         cout<<"あなたの負けです"<<endl; 
