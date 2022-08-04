@@ -88,7 +88,7 @@ int main() {
     if(Dsum >26){
       cout<<"あなたの勝ちです"<<endl; 
       victory = true;
-      pK += pK*1.5;
+      pK *=1.5;
     }
 
   //ディーラーの合計数が26だったら負ける
@@ -118,11 +118,11 @@ int main() {
           pSum += pCard[1 +pD];
           //ダブルアップしたのでフラグを立てる
           doubleUp = true;      
-          cout<<"合計a"<<pSum<<endl;
+          cout<<"合計"<<pSum<<endl;
       }
     }
   
-  //勝負が続いていたら
+  //ダブルアップしない場合
     if(victory == false && lose == false && doubleUp == false){
       //プレイヤーの合計数が26少ない時
       while(pSum<26)
@@ -154,9 +154,9 @@ int main() {
       cout<<"あなたの勝ちです"<<endl;
       victory = true;
       if(doubleUp == true){
-        pK+= pK*2+pK;
+        pK*=2;
       }else{
-        pK += pK*1.5;
+        pK *=1.5;
       }
     }
 
@@ -165,23 +165,19 @@ int main() {
     {
       cout<<"あなたの負けです"<<endl; 
       lose = true;
-       if(doubleUp == true){
-        pK-=pK;
-      }else{
-        pK += pK*1.5;
-      }
+      pK-=pK;
     }
   
     //上のif文に入らなかった場合の処理
     if(victory == false && lose == false){
       if(Dsum >= pSum){
         cout<<"あなたの負けです"<<endl; 
-        pK-=pK* 1.5;
+        pK-=pK;
       }else if(Dsum == pSum){
         cout<<"引き分けです"<<endl; 
       }else{
         cout<<"あなたの勝ちです"<<endl; 
-        pK += pK*1.5;
+        pK *=1.5;
       }
     }
 }
