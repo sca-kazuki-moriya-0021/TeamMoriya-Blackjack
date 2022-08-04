@@ -22,6 +22,7 @@ int main() {
   int e = 0;//ディーラーが引く数
   int pD = 0;//プレイヤーのカードの配列の要素をずらす用変数
   int p = 1; //全体のカードの配列から、プレイヤーが引くカードの調整用変数
+  int pCardS = 0;//プレイヤーがカード引いた数
 
   int pSum =0;//プレイヤーが引いた数の合計数
 
@@ -97,20 +98,31 @@ int main() {
       lose = true;
       pK-=pK;
     }
-  
-    //プレイヤーの操作
-    if(victory == false && lose == false){  
-      //プレイヤーカード配列0番目に全体のcard配列の値を入れる
-      pCard[0] = card[e + p];
-      cout<<pCard[0]<<endl;  
-      //合計数加算  
-      pSum += pCard[0];
-      //配列の要素をずらす
-      p++;
-      cout<<"ダブルアップをしますか？"<<endl;  
-      cout<<"引くなら1 引かないなら2を押してください"<<endl;  
-      cin >> doubleUpInt;
-      if(doubleUpInt == 1){
+
+    //プレイヤーが2枚引く操作
+    if(pCardS <3){
+        pCard[1 + pD] = card[e+p];
+        cout<<pCard[1 +pD]<<endl; 
+        //プレイヤーカードの合計数        
+        pSum += pCard[1 +pD];
+        //配列の要素を一つずらす        
+        pD++;
+        p++;
+        pCardS++;
+    }
+
+    cout<<"合計"<<pSum<<endl;
+
+
+  //カードをひく場合
+    if(victory == false && lose == false && doubleUp == false){
+      //プレイヤーの合計数が26少ない時
+      while(pSum<26)
+      {
+        cout<<"ダブルアップをしますか？"<<endl;  
+        cout<<"引くなら1 引かないなら2を押してください"<<endl;  
+        cin >> doubleUpInt;
+        if(doubleUpInt == 1){
           //プレイヤーカード配列に値を記憶させる
           pCard[1 + pD] = card[e+p];
           cout<<pCard[1 +pD]<<endl; 
@@ -119,14 +131,8 @@ int main() {
           //ダブルアップしたのでフラグを立てる
           doubleUp = true;      
           cout<<"合計"<<pSum<<endl;
-      }
-    }
-  
-  //ダブルアップしない場合
-    if(victory == false && lose == false && doubleUp == false){
-      //プレイヤーの合計数が26少ない時
-      while(pSum<26)
-      {
+        }
+
         cout<<"カードを引きますか？"<<endl;
         cout<<"引くなら1 引かないなら2を押してください"<<endl;  
         cin>>drawS; 
