@@ -113,10 +113,10 @@ int main() {
 
 
 
-  //カードをひく場合
+  //勝敗がついていない場合
     if(victory == false && lose == false){
-      //プレイヤーの合計数が26少ない時
       cout<<"合計"<<pSum<<endl;
+      //プレイヤーの合計数が26少ない時
       while(pSum<26)
       {
         cout<<"ダブルアップをしますか？"<<endl;  
